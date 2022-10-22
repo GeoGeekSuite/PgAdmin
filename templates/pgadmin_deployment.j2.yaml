@@ -37,13 +37,6 @@ spec:
           volumeMounts:
             - name: pgadmin-data
               mountPath: /var/lib/pgadmin
-      initContainers:
-        - name: volume-mount-hack
-          image: busybox
-          command: ["sh", "-c", "chown -R 501:501 /var/lib/pgadmin"]
-          volumeMounts:
-            - name: pgadmin-data
-              mountPath: /var/lib/pgadminn
       volumes:
         - name: pgadmin-data
           persistentVolumeClaim:
