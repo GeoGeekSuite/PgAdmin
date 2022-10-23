@@ -16,6 +16,14 @@
   shell:
     cmd: 'kubectl apply -f pgadmin_secret.yaml -n {{ gisnamespace }}'
     chdir: '{{ manifest_folder }}'
+- name: Render server config cm
+  template:
+    src: server.j2.yaml
+    dest: '{{ manifest_folder }}/server.yaml'
+- name: Create server config cm
+  shell:
+    cmd: 'kubectl apply -f server.yaml -n {{ gisnamespace }}'
+    chdir: '{{ manifest_folder }}'
 - name: Render PG Admin manifest
   template:
     src: pgadmin_deployment.j2.yaml

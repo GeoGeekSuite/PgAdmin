@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: pgadmin
 data:
-  PGADMIN_DEFAULT_EMAIL: {{ pgadmin.mail }}
+  PGADMIN_DEFAULT_EMAIL: {{ user.admin.email }}
